@@ -4,8 +4,13 @@ from matplotlib import pyplot as plot
 import array
 
 
-X_cordinate = np.array([5,15,25,35,45,55]).reshape((-1,1))
-Y_coodinate = np.array([54, 20, 14, 32, 22, 38])
+data =np.genfromtxt('data.csv',delimiter=',')
+#print(data)
+X_X = data[:, 0]
+Y_Y = data[:, 1]
+X_cordinate = np.asarray(X_X).reshape(-1,1)
+Y_coodinate = np.asarray(Y_Y)
+#X_cordinate.reshape(-1,1)
 plot.title("Linear Regression") 
 plot.xlabel("X-Axis") 
 plot.ylabel("Y-Axis") 
@@ -25,7 +30,6 @@ This sort of vectors are produced to be sent as inputs to
 
 
 [ 5 20 14 32 22 38]
-
 """
 
 model = LinearRegression()     #inbuilt function as a part of the scikit-learn package
@@ -60,6 +64,6 @@ while count < size:
 to_predict=np.asarray(a).reshape((-1,1))
 
 predicted_Y_cordinate = model.predict(to_predict)
-plt.plot(to_predict , predicted_Y_cordinate, label='Line obtained from linear Regression')
+plot.plot(to_predict , predicted_Y_cordinate, label='Line obtained from linear Regression')
 print("\n")
 print('predicted response:', predicted_Y_cordinate)
